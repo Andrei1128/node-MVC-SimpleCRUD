@@ -1,0 +1,72 @@
+<% layout('boilerplate/layout.ejs') %>
+    <div class="app-wrapper">
+        <h1 class="app-title">Employee Management Software</h1>
+        <div class="btn-wrapper">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                Add Employee
+            </button>
+            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="staticBackdropLabel">Add Employee</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="/home" method="POST">
+                                <input type="text" class="form-control" name="prenume" placeholder="First Name">
+                                <input type="text" class="form-control" name="nume" placeholder="Last Name">
+                                <input type="text" class="form-control" name="email" placeholder="Email">
+                                <input type="text" class="form-control" name="salariu" placeholder="Salary">
+                                <input type="text" class="form-control" name="data" placeholder="Date">
+                                <button class="btn btn-primary form-btn">Add</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button type="button" class="btn btn-outline-secondary">Logout</button>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Email</th>
+                        <th>Salary</th>
+                        <th>Date</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for(let angajat of angajati) { %>
+                        <tr>
+                            <td>
+                                <%= angajat.prenume %>
+                            </td>
+                            <td>
+                                <%= angajat.nume %>
+                            </td>
+                            <td>
+                                <%= angajat.email %>
+                            </td>
+                            <td>
+                                <%= angajat.salariu %>
+                            </td>
+                            <td>
+                                <%= angajat.data %>
+                            </td>
+                            <td class="action-td">
+                                <form action="/home/<%=angajat.id%>?_method=DELETE" method="POST">
+                                    <button class="btn btn-outline-secondary">Delete</button>
+                                </form>
+                                <a class="btn btn-outline-secondary" href="/home/<%=angajat.id%>">Edit</a>
+                            </td>
+                        </tr>
+                        <% } %>
+                </tbody>
+            </table>
+        </div>
+    </div>
