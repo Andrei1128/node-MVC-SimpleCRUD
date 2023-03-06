@@ -9,10 +9,10 @@ const {
   addAngajat,
 } = require("../controllers/home");
 
-router.get("/home", getAngajati);
-router.get("/home/:id", getAngajat);
-router.post("/home", addAngajat);
-router.put("/home/:id", updateAngajat);
-router.delete("/home/:id", deleteAngajat);
+router.get("/", getAngajati);
+router.get("/:id", getAngajat);
+router.post("/", addAngajat);
+router.put("/:id", updateAngajat);
+router.delete("/:id", deleteAngajat);
 
 module.exports = router;

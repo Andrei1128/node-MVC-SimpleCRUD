@@ -15,18 +15,21 @@
                         </div>
                         <div class="modal-body">
                             <form action="/home" method="POST">
-                                <input type="text" class="form-control" name="prenume" placeholder="First Name">
-                                <input type="text" class="form-control" name="nume" placeholder="Last Name">
-                                <input type="text" class="form-control" name="email" placeholder="Email">
-                                <input type="text" class="form-control" name="salariu" placeholder="Salary">
-                                <input type="text" class="form-control" name="data" placeholder="Date">
+                                <input type="text" class="form-control" name="prenume" placeholder="First Name"
+                                    minlength="3" required>
+                                <input type="text" class="form-control" name="nume" placeholder="Last Name"
+                                    minlength="3" required>
+                                <input type="email" class="form-control" name="email" placeholder="Email" minlength="8"
+                                    required>
+                                <input type="number" class="form-control" name="salariu" placeholder="Salary" min="0"
+                                    required>
+                                <input type="date" class="form-control" name="data" placeholder="Date" required>
                                 <button class="btn btn-primary form-btn">Add</button>
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
-            <button type="button" class="btn btn-outline-secondary">Logout</button>
         </div>
         <div class="table-responsive">
             <table class="table table-striped align-middle">
@@ -53,7 +56,7 @@
                                 <%= angajat.email %>
                             </td>
                             <td>
-                                <%= angajat.salariu %>
+                                <%= angajat.salariu %>$
                             </td>
                             <td>
                                 <%= angajat.data %>
