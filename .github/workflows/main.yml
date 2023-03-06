@@ -19,8 +19,8 @@ jobs:
     - run: npm i
     - run: npm run build --if-present
     - run: npm run
-    - name: SSH Remote Commands
-      uses: appleboy/ssh-action@v0.1.8
-      with:
-        key: ${{secrets.MONGO_URL}}
-        port: ${{secrets.PORT}}
+#     - name: SSH Remote Commands
+#       uses: appleboy/ssh-action@v0.1.8
+#       with:
+#         key: ${{secrets.MONGO_URL}}
+#         port: ${{secrets.PORT}}
