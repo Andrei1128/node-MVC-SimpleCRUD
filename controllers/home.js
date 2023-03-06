@@ -1,24 +1,24 @@
 const angajat = require("../models/angajat");
 
-const getAngajat = (req, res) => {
-  const angajatGasit = angajat.findById(req.params.id);
+const getAngajat = async (req, res) => {
+  const angajatGasit = await angajat.findById(req.params.id);
   res.render("templates/angajat.ejs", { angajat: angajatGasit });
 };
-const getAngajati = (req, res) => {
-  const angajati = angajat.find({});
+const getAngajati = async (req, res) => {
+  const angajati = await angajat.find({});
   res.render("templates/home.ejs", { angajati });
 };
-const addAngajat = (req, res) => {
+const addAngajat = async (req, res) => {
   const angajatNou = new angajat(req.body);
-  angajatNou.save();
+  await angajatNou.save();
   res.redirect("/home");
 };
-const updateAngajat = (req, res) => {
-  angajat.findByIdAndUpdate(req.params.id, req.body);
+const updateAngajat = async (req, res) => {
+  await angajat.findByIdAndUpdate(req.params.id, req.body);
   res.redirect("/home");
 };
-const deleteAngajat = (req, res) => {
-  angajat.findByIdAndDelete(req.params.id);
+const deleteAngajat = async (req, res) => {
+  await angajat.findByIdAndDelete(req.params.id);
   res.redirect("/home");
 };
 
